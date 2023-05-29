@@ -6,4 +6,8 @@ pkgs.mkShell {
     git-crypt
     gnupg
   ];
+  shellHook = ''
+    echo Initiating git-crypt
+    # git-crypt unlock
+  '';
 }
