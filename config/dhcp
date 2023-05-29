@@ -61,7 +61,7 @@ config host
 	option name 'GoogleMiniGarden'
 	option dns '1'
 	option leasetime '2m'
-	option ip '10.2.1.40'
+	option ip '10.2.1.4'
 
 config host
 	option mac 'D8:A0:11:3F:DE:E2'
