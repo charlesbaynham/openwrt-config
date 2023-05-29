@@ -1,4 +1,4 @@
-ssh_host="openwrt"
+ssh_host="openwrt_factory"
 
 # Load secrets
 source .secrets
