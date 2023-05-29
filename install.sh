@@ -1,4 +1,4 @@
-ssh_host="openwrt_factory"
+ssh_host="openwrt"
 
 # Load secrets
 source .secrets
@@ -33,19 +33,19 @@ ENDSSH
 echo Copying config files with SFTP
 scp dist/* ${ssh_host}:/tmp/git_uci_config
 
-# echo "Configure router"
-# ssh ${ssh_host} <<'ENDSSH'
-#     echo SSH connection successful
-#     echo Clearing old config...
-#     rm /etc/config/*
-#     echo Loading new config...
-#     cp /tmp/git_uci_config/* /etc/config/.
-#     echo Committing...
-#     uci commit
-#     echo Running "reload_config"
-#     reload_config
-#     echo Completed!
-# ENDSSH
+echo "Configure router"
+ssh ${ssh_host} <<'ENDSSH'
+    echo SSH connection successful
+    echo Clearing old config...
+    rm /etc/config/*
+    echo Loading new config...
+    cp /tmp/git_uci_config/* /etc/config/.
+    echo Committing...
+    uci commit
+    echo Running "reload_config"
+    reload_config
+    echo Completed!
+ENDSSH
 
 # Finally, update ssh authorized_keys
 echo Updating authorized_keys...
