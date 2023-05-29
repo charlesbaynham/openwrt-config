@@ -1,29 +1,29 @@
 
 config dnsmasq
 	option domainneeded '1'
+	option boguspriv '1'
+	option filterwin2k '0'
 	option localise_queries '1'
 	option rebind_protection '1'
 	option rebind_localhost '1'
+	option local '/lan/'
+	option domain 'lan'
 	option expandhosts '1'
+	option nonegcache '0'
 	option authoritative '1'
 	option readethers '1'
 	option leasefile '/tmp/dhcp.leases'
+	option resolvfile '/tmp/resolv.conf.auto'
+	option nonwildcard '1'
 	option localservice '1'
-	option domain 'lan'
-	option local '/lan/'
-	list server '8.8.8.8'
-	list server '8.8.4.4'
-	option sequential_ip '1'
 
 config dhcp 'lan'
 	option interface 'lan'
 	option start '100'
 	option limit '150'
+	option leasetime '12h'
 	option dhcpv6 'server'
 	option ra 'server'
-	option ra_management '1'
-	option force '1'
-	option leasetime '2m'
 
 config dhcp 'wan'
 	option interface 'wan'
@@ -35,125 +35,3 @@ config odhcpd 'odhcpd'
 	option leasetrigger '/usr/sbin/odhcpd-update'
 	option loglevel '4'
 
-config host
-	option mac '00:17:88:63:1D:F6'
-	option name 'Philips-hue'
-	option dns '1'
-	option ip '10.0.1.5'
-	option leasetime '2m'
-
-config host
-	option mac 'DC:A6:32:AA:30:0E'
-	option dns '1'
-	option duid '00049697e9afb8d9d9b58ce66553ecf3057d'
-	option leasetime '2m'
-	option name 'homeassistant'
-	option ip '10.0.1.2'
-
-config dhcp 'GARDEN'
-	option start '100'
-	option limit '150'
-	option interface 'GARDEN'
-	option leasetime '100m'
-
-config host
-	option mac '38:8B:59:A4:99:1F'
-	option name 'GoogleMiniGarden'
-	option dns '1'
-	option leasetime '2m'
-	option ip '10.2.1.40'
-
-config host
-	option mac 'D8:A0:11:3F:DE:E2'
-	option leasetime '2m'
-	option dns '1'
-	option name 'GardenBulb'
-	option ip '10.2.1.3'
-
-config host
-	option mac 'DC:A6:32:AA:30:0F'
-	option leasetime '2m'
-	option dns '1'
-	option name 'homeassistant_wifi'
-	option ip '10.0.1.123'
-
-config dhcp 'IOT'
-	option start '100'
-	option limit '150'
-	option interface 'IOT'
-	option leasetime '2m'
-
-config host
-	option mac '78:11:DC:7E:0F:39'
-	option leasetime '2m'
-	option name 'roborock'
-	option dns '1'
-	option ip '10.99.1.2'
-
-config host
-	option mac '4C:EB:D6:0F:E9:73'
-	option leasetime '2m'
-	option dns '1'
-	option name 'DishwasherDead'
-	option ip '10.99.1.3'
-
-config host
-	option mac '4C:EB:D6:0F:F1:D5'
-	option leasetime '2m'
-	option dns '1'
-	option name 'GBlanket'
-	option ip '10.99.1.4'
-
-config host
-	option mac 'B0:4E:26:48:87:A9'
-	option leasetime '2m'
-	option dns '1'
-	option name 'CBlanket'
-	option ip '10.99.1.5'
-
-config dhcp 'GardenTmp'
-	option start '100'
-	option limit '150'
-	option interface 'GardenTmp'
-	option force '1'
-	option leasetime '2m'
-
-config dhcp 'tmp'
-	option start '100'
-	option limit '150'
-	option interface 'tmp'
-	option leasetime '2m'
-
-config host
-	option name 'Garden_AP'
-	option dns '1'
-	option ip '10.0.2.3'
-
-config host
-	option mac '70:9C:D1:A2:23:AD'
-	option leasetime '2m'
-	option dns '1'
-	option name 'ZBook'
-	option ip '10.0.1.3'
-
-config dhcp 'garden'
-	option start '100'
-	option limit '150'
-	option interface 'garden'
-	option leasetime '2m'
-	option force '1'
-
-config host
-	option mac '28:EE:52:B7:5E:40'
-	option leasetime '2m'
-	option dns '1'
-	option name 'tplink_ap'
-	option ip '10.2.1.2'
-
-
-config host
-	option mac 'B0:E4:D5:AD:B1:09'
-	option leasetime '2m'
-	option dns '1'
-	option name 'GardenChromecast'
-	option ip '10.2.1.5'

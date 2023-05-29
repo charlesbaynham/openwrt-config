@@ -1,4 +1,3 @@
-
 config core 'main'
 	option lang 'auto'
 	option mediaurlbase '/luci-static/bootstrap'
@@ -35,4 +34,3 @@ config internal 'diag'
 	option dns 'openwrt.org'
 	option ping 'openwrt.org'
 	option route 'openwrt.org'
-
