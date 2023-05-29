@@ -1,4 +1,4 @@
-ssh_host="houseabsolute"
+ssh_host="openwrt"
 
 # Load secrets
 source .secrets
@@ -15,7 +15,7 @@ do
 done
 
 # Copy required files to device
-ssh houseabsolute <<'ENDSSH'
+ssh ${ssh_host} <<'ENDSSH'
     echo SSH connection successful
     echo Preparing staging directory on router
     rm -r /tmp/git_uci_config || true
@@ -26,7 +26,7 @@ echo Copying config files with SFTP
 scp dist/* ${ssh_host}:/tmp/git_uci_config
 
 echo "Configure router"
-ssh houseabsolute <<'ENDSSH'
+ssh ${ssh_host} <<'ENDSSH'
     echo SSH connection successful
     echo Clearing old config...
     rm /etc/config/*
