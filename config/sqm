@@ -1,0 +1,14 @@
+
+config queue 'normal'
+	option qdisc_advanced '0'
+	option interface 'pppoe-wan'
+	option debug_logging '0'
+	option verbosity '5'
+	option linklayer 'atm'
+	option overhead '44'
+	option script 'layer_cake.qos'
+	option qdisc 'cake'
+	option enabled '1'
+	option upload '10000'
+	option download '70000'
+

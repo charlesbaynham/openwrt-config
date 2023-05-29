@@ -1,0 +1,34 @@
+name: Validate Config
+
+on:
+  push:
+
+env:
+  CI: true
+
+jobs:
+  validate:
+    name: "Validate Config"
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install required packages
+      run: |
+        sudo apt-get update
+        sudo apt-get install cmake git
+    - name: Install libubox 
+      run: |
+        git clone http://git.nbd.name/luci2/libubox.git 
+        cd libubox
+        cmake -DBUILD_LUA=off
+        sudo make install
+    - name: Install UCI 
+      run: |
+        git clone https://git.openwrt.org/project/uci.git 
+        cd uci
+        cmake -DBUILD_LUA=off
+        sudo make install
+        sudo ldconfig
+    - name: Validate config 
+      run: |
+        ./validate.sh
