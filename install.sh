@@ -3,6 +3,14 @@ ssh_host="openwrt"
 # Load secrets
 source .secrets
 
+# Confirm that it worked
+if [ -z ${GIT_CRYPT_UNLOCKED+x} ]; then
+    echo "Secrets file is not decryted - run git-crypt unlock"
+    exit 1
+else
+    echo "Secrets are decrypted - continuing..."
+fi
+
 # Prepare staging area
 rm -r dist || true
 mkdir -p dist/
