@@ -36,14 +36,15 @@ scp dist/* ${ssh_host}:/tmp/git_uci_config
 echo "Configure router"
 ssh ${ssh_host} <<'ENDSSH'
     echo SSH connection successful
-    echo Clearing old config...
-    rm /etc/config/*
+    echo Not clearing old config. Old config:
+    ls /etc/config
     echo Loading new config...
+    ls /tmp/git_uci_config
     cp /tmp/git_uci_config/* /etc/config/.
     echo Committing...
     uci commit
-    # echo Running "reload_config"
-    # reload_config
+    echo Running "reload_config"
+    reload_config
     echo Completed!
 ENDSSH
 
