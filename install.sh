@@ -37,9 +37,9 @@ echo "Configure router"
 ssh ${ssh_host} <<'ENDSSH'
     echo SSH connection successful
     echo Not clearing old config. Old config:
-    ls /etc/config
+    ls -la /etc/config
     echo Loading new config...
-    ls /tmp/git_uci_config
+    ls -la /tmp/git_uci_config
     cp /tmp/git_uci_config/* /etc/config/.
     echo Committing...
     uci commit
