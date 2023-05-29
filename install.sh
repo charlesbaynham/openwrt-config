@@ -42,13 +42,13 @@ ssh ${ssh_host} <<'ENDSSH'
     cp /tmp/git_uci_config/* /etc/config/.
     echo Committing...
     uci commit
-    echo Running "reload_config"
-    reload_config
+    # echo Running "reload_config"
+    # reload_config
     echo Completed!
 ENDSSH
 
-# Finally, update ssh authorized_keys
-echo Updating authorized_keys...
-scp authorized_keys ${ssh_host}:/root/.ssh
+# # Finally, update ssh authorized_keys
+# echo Updating authorized_keys...
+# scp authorized_keys ${ssh_host}:/root/.ssh
 
 echo Done.
